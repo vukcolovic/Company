@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>#{title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<h:outputLink ></h:outputLink>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<base href=" http://localhost:8080/Company/" />
+</h:head>
+<h:body>
+	<div class="" style="min-height: 600px">
+		<div class="row">
+			<nav class="navbar navbar-expand-sm bg-dark navbar-dark w-100">
+			<a class="navbar-brand" href="#"><img
+				src="resources/images/logo.jpg" alt="Alternative Text" /></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#collapsibleNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav">
+					<li class="nav-item active"><a class="nav-link" href="#">Home</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="user.xhtml">User</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Machines</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">General</a></li>
+				</ul>
+			</div>
+			<h:form>
+			<p:commandButton class="float-md-right" action="#{logoutController.logout}" value="Logout"></p:commandButton>
+			</h:form>
+			</nav>
+		</div>
+
+		<div class="row" style="min-height: 500px">
+			<div class="col-md-2">
+				<nav class="sidebar bg-secondary navbar-dark text-white sticky-top" style="height: 100%">
+				<ul class="nav flex-column">
+					<li class="nav-item"><a class="nav-link text-white" href="#"><i class="fa fa-adjust"></i>  Overwiew</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="#"><i class="fa fa-adjust"></i>  Reports</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="#"><i class="fa fa-adjust"></i>  Analystic</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="#"><i class="fa fa-adjust"></i>  eport</a></li>
+				</ul>
+				</nav>
+<!-- 	Change with top content			<ui:include src="leftnav/#{leftNavigationPage}"> -->
+				
+<!-- 				</ui:include > -->
+			</div>
+			<div class="col-md-10">
+				<div class="forAction">
+					<ui:insert name="content">
+
+					</ui:insert>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="footer bg-dark text-center text-muted">
+					<p:outputLabel class="text-center">Created by Vuk Colovic</p:outputLabel>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</h:body>
+</html>
+
