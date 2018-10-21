@@ -23,7 +23,25 @@
 						<p:inputText id="userUsername" required="true"
 							disabled="#{userController.readonly}"
 							requiredMessage="Username is required!"
-							value="#{userController.user.username}" />
+							value="#{userController.user.username}" >
+							<f:validateLength minimum="2" maximum="32"/>
+							</p:inputText>
+							
+								<p:outputLabel for="userFirstName" value="First name" />
+						<p:inputText id="userFirstName" required="true"
+							disabled="#{userController.readonly}"
+							requiredMessage="First name is required!"
+							value="#{userController.user.firstName}" >
+							<f:validateLength minimum="2" maximum="32"/>
+							</p:inputText>
+							
+								<p:outputLabel for="userLasttName" value="Last name" />
+						<p:inputText id="userLasttName" required="true"
+							disabled="#{userController.readonly}"
+							requiredMessage="Last name is required!"
+							value="#{userController.user.lastName}" >
+							<f:validateLength minimum="2" maximum="32"/>
+							</p:inputText>
 
 						<p:outputLabel for="userEmail" value="Email" />
 						<p:inputText id="userEmail" required="true"
@@ -36,7 +54,10 @@
 						<p:password id="userPassword" required="true" rendered="true"
 							disabled="#{userController.readonly}"
 							requiredMessage="Password is required!"
-							value="#{userController.user.password}" />
+							value="#{userController.user.password}" >
+							<f:validateLength minimum="2" maximum="32"/>
+							</p:inputText>
+							
 
 						<p:outputLabel for="repetedPassword" value="Repet Password" />
 						<p:password id="repetedPassword" required="true" rendered="true"
@@ -107,7 +128,7 @@ View
 					var="user" selectionMode="single"
 					selection="#{userController.selectedUser}" rowKey="#{user.id}"
 					paginator="true" paginatorPosition="top" rows="5"
-					rowsPerPageTemplate="5,10,15">
+					rowsPerPageTemplate="5,10,15" sortBy="#{user.id}" sortOrder="descending">
 
 					<p:ajax event="rowSelect" listener="#{userController.onRowSelect}"
 						update="userTableForm" />
@@ -116,6 +137,12 @@ View
 
 					<p:column headerText="Id" sortBy="#{user.id}">
 						<h:outputText value="#{user.id}" />
+					</p:column>
+					<p:column headerText="First name" >
+						<h:outputText value="#{user.firstName}" />
+					</p:column>
+					<p:column headerText="Last name">
+						<h:outputText value="#{user.lastName}" />
 					</p:column>
 					<p:column headerText="Username" sortBy="#{user.username}">
 						<h:outputText value="#{user.username}" />
@@ -137,11 +164,5 @@ View
 
 
 	</ui:define>
-
-	<script>
-		function myFunction() {
-			confirm("Are you sure to logout?");
-		}
-	</script>
 
 </ui:composition>

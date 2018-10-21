@@ -87,6 +87,7 @@ public class UserController implements Serializable {
 		} else {
 			FacesContext.getCurrentInstance().addMessage("MessageId",
 					new FacesMessage(FacesMessage.SEVERITY_WARN, "There is no selected user!", null));
+			RequestContext.getCurrentInstance().update("userTableForm");
 		}
 	}
 
@@ -106,7 +107,7 @@ public class UserController implements Serializable {
 
 		if (selectedUser == null) {
 			FacesContext.getCurrentInstance().addMessage("messageId",
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "Select user!", null));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "There is no selected user!", null));
 			RequestContext.getCurrentInstance().update("userTableForm");
 		} else {
 			userService.deleteUser(selectedUser.getId());
@@ -122,7 +123,8 @@ public class UserController implements Serializable {
 		readonly = true;
 		if (selectedUser == null) {
 			FacesContext.getCurrentInstance().addMessage("messageId",
-					new FacesMessage(FacesMessage.SEVERITY_WARN, "Select user!", null));
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "There is no selected user!", null));
+			RequestContext.getCurrentInstance().update("userTableForm");
 		} else {
 			user = selectedUser;
 			RequestContext.getCurrentInstance().execute("PF('addUserDlgVar').show();");
