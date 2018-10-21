@@ -1,5 +1,6 @@
 package presentation;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.ejb.EJB;
@@ -51,6 +52,19 @@ public class LoginController implements Serializable {
 			FacesContext.getCurrentInstance().addMessage("loginForm", new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Wrong username or password", ""));
 			return "login";
+		}
+	}
+	
+	public void logout() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) context
+				.getExternalContext().getSession(true);
+		session.invalidate();
+		try {
+			context.getExternalContext().redirect("Login.xhtml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
