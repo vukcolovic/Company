@@ -19,7 +19,7 @@ import service.UserService;
 
 @Named
 @ViewScoped
-public class UserController implements Serializable {
+public class UserController extends BaseController implements Serializable {
 
 	/**
 	 * serialVersionUID
@@ -82,6 +82,7 @@ public class UserController implements Serializable {
 	
 	public void showEditUser() {
 		if(selectedUser != null) {
+			user = selectedUser;
 			setReadonly(false);
 			RequestContext.getCurrentInstance().execute("PF('addUserDlgVar').show();");
 		} else {
